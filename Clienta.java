@@ -4,7 +4,7 @@ import java.net.Inet4Address;
 
 public class Clienta {
 
-    public static String DEST = "";
+    public static String DEST = "172.24.197.84";
 
     public static void main(String[] args) {
         Body b = null;
@@ -20,11 +20,13 @@ public class Clienta {
 
         try {
             b.send(dat);
+            System.out.println("Sent data");
+            Thread.sleep(10000);
         } catch (IOException e) {
             System.out.println("Failed to send bytes\nAborting . . .");
             System.exit(1);
             
-        }
+        } catch (InterruptedException e) {}
 
         b.breakSend();
         

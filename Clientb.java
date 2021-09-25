@@ -1,6 +1,7 @@
 
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Clientb {
     public static void main(String[] args) {
@@ -13,8 +14,12 @@ public class Clientb {
         }
         b.listen(
             (s) -> {
+                System.out.println("got stream");
                 try {
-                    DataInputStream ds = new DataInputStream(s.getInputStream());
+                    InputStream i = s.getInputStream();
+                    System.out.println(i);
+                    DataInputStream ds = new DataInputStream(i);
+                    System.out.println(ds);
                     String strr = ds.readUTF();
                     System.out.println(strr);
                 } catch(IOException e) {

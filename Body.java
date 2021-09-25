@@ -30,6 +30,7 @@ public class Body {
         try {
             dest = new Socket(ip, port);
             this.inServerMode = true;
+            System.out.println("Successfully set dest: " + ip);
         } catch (IOException e) {
             return false;
         }
@@ -57,9 +58,11 @@ public class Body {
         this.inServerMode = true;
         while (this.inServerMode) {
             try {
+                System.out.println("Listening");
                 Socket s = server.accept();
+                System.out.println("Got a socket");
                 f.accept(s);
-
+                System.out.println("Processed socket");
                 s.close();
                 //TODO: let this function accept a lambda expression that handles a Socket
                 //the function should have no delay/timeout/be async
