@@ -4,7 +4,9 @@ import java.net.Inet4Address;
 
 public class Clienta {
 
-    public static String DEST = "172.24.196.187";
+
+    public static String DEST = "172.24.112.100";
+
 
     public static void main(String[] args) {
         Body b = null;
