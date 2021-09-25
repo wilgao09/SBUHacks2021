@@ -1,6 +1,5 @@
 // Java program to create a popup and
 // add it to the stage
-import javafx.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
