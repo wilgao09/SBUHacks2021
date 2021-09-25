@@ -1,0 +1,12 @@
+javac -classpath javafx-sdk-17.0.0.1/lib/javafx-swt.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.base.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.controls.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.fxml.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.graphics.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.media.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.properties
+-classpath javafx-sdk-17.0.0.1/lib/javafx.swing.jar
+-classpath javafx-sdk-17.0.0.1/lib/javafx.web.jar
+Popup_test.java
+
+javac -classpath ".;javafx-sdk-17.0.0.1/lib/javafx.web.jar;javafx-sdk-17.0.0.1/lib/javafx.swing.jar;javafx-sdk-17.0.0.1/lib/javafx.properties;javafx-sdk-17.0.0.1/lib/javafx.media.jar;javafx-sdk-17.0.0.1/lib/javafx.graphics.jar;javafx-sdk-17.0.0.1/lib/javafx.fxml.jar;javafx-sdk-17.0.0.1/lib/javafx.controls.jar;javafx-sdk-17.0.0.1/lib/javafx.base.jar;javafx-sdk-17.0.0.1/lib/javafx-swt.jar;" Popup_test.java

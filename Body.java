@@ -5,17 +5,21 @@ import java.net.ServerSocket;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 public class Body {
     private Socket dest;
     private ServerSocket server;
     private boolean inServerMode = false;
     private boolean inSenderMode = true;
-    private int port = 0;
+    public int port = 0;
 
-    public Body(int port) throws IOException {
+    public Body(int port, boolean asServer) throws IOException {
         this.port = port;
-        this.server = new ServerSocket(port);
+        if (asServer) {
+            this.server = new ServerSocket(port);
+        }
+        
     }
 
     /**
@@ -25,7 +29,7 @@ public class Body {
      */
     public boolean setDestination(String ip) {
         if (this.inServerMode) {
-            //TODO: throw an error
+            System.out.println("Invalid state");
         }
         try {
             dest = new Socket(ip, port);
@@ -44,16 +48,23 @@ public class Body {
      */
     public void send(byte[] data) throws IOException{
         if (this.inSenderMode && !this.inServerMode) {
+            System.out.println("Sending data to " + this.dest);
             OutputStream outS = dest.getOutputStream();
             DataOutputStream o = new DataOutputStream(outS);
+            PrintWriter out = new PrintWriter(outS, true);
+            out.println("this a string");
+            out.flush();
 
-            o.write(data);
+            // o.writeUTF("frfrfr");
+            // o.flush();
+        } else {
+            System.out.println("Tried to send a message, but couldn't (Body is set to server mdoe or is not in sender mode)");
         }
     }
 
     public void listen(Consumer<Socket> f) {
         if (this.inSenderMode) {
-            //TODO: throw an error
+            System.out.println("Tried to set up server, but couldn't (Body si in sender mode)");
         }
         this.inServerMode = true;
         while (this.inServerMode) {
