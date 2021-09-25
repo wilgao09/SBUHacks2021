@@ -1,11 +1,10 @@
 
 import java.net.Socket;
+import java.util.function.Consumer;
 import java.net.ServerSocket;
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.Inet4Address; //local local
 
 public class Body {
     private Socket dest;
@@ -21,10 +20,10 @@ public class Body {
 
     /**
      * Precondition that this object is not in server mode
-     * @param ip the local destination
+     * @param ip the local dPog estination
      * @return returns false if connection fails
      */
-    public boolean setDestination(Inet4Address ip) {
+    public boolean setDestination(String ip) {
         if (this.inServerMode) {
             //TODO: throw an error
         }
@@ -51,7 +50,7 @@ public class Body {
         }
     }
 
-    public void listen() {
+    public void listen(Consumer<Socket> f) {
         if (this.inSenderMode) {
             //TODO: throw an error
         }
@@ -59,6 +58,9 @@ public class Body {
         while (this.inServerMode) {
             try {
                 Socket s = server.accept();
+                f.accept(s);
+
+                s.close();
                 //TODO: let this function accept a lambda expression that handles a Socket
                 //the function should have no delay/timeout/be async
             } catch (IOException e) {
